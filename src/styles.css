@@ -1,0 +1,289 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+html,
+body,
+#root {
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  color: white;
+}
+
+body {
+  background: #121212;
+  font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', 'Helvetica Neue', Helvetica, Arial, Roboto,
+    Ubuntu, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+}
+
+.scrollArea {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: auto;
+}
+
+/* Loading Container */
+.loading {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  background: #121212;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+}
+
+.loading-bar-container {
+  width: 200px;
+  height: 5px;
+  background: #272727;
+}
+
+.loading-bar {
+  height: 5px;
+  background: white;
+  border-radius: 10px;
+}
+
+.loading-data {
+  display: block;
+  font-family: 'Roboto';
+  position: relative;
+  color: #f0f0f0;
+  font-size: 5em;
+  font-weight: 700;
+}
+
+/* Custom Cursor */
+.main-cursor,
+.secondary-cursor {
+  z-index: 10000;
+  pointer-events: none;
+  transform: translate3d(-100%, -100%, 0);
+  position: fixed;
+}
+
+.main-cursor {
+  mix-blend-mode: difference;
+}
+
+.main-cursor .main-cursor-background {
+  width: 25px;
+  height: 25px;
+  background: #fff;
+  border-radius: 50%;
+}
+
+.secondary-cursor {
+  width: 30px;
+  height: 30px;
+  mix-blend-mode: difference;
+  transition: opacity 1s cubic-bezier(0.77, 0, 0.175, 1);
+  opacity: 0;
+}
+
+.secondary-cursor .cursor-background {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: #fff;
+  position: relative;
+}
+
+.secondary-cursor .cursor-background:after,
+.secondary-cursor .cursor-background:before {
+   content: "";
+   width: 3px;
+   height: 3px;
+   border-radius: 50%;
+   background: white;
+   display: block;
+   position: absolute;
+   top: 50%;
+   transform: translateY(-50%);
+   animation: fadeOut 0.75s cubic-bezier(0.77, 0, 0.175, 1) 0s forwards;
+}
+
+.secondary-cursor .cursor-background:before {
+   left: 10px;
+}
+
+.secondary-cursor .cursor-background:after {
+   right: 10px;
+}
+
+.slider-drag .cursor-background {
+  animation: scaleUp 1s cubic-bezier(0.77, 0, 0.175, 1) 0s forwards,
+  bgUp 1s cubic-bezier(0.77, 0, 0.175, 1) 0s forwards;
+}
+
+.slider-drag .cursor-background:after {
+   animation: fadeIn 1s cubic-bezier(0.77, 0, 0.175, 1) 0s forwards,
+   translateRightDot 1s cubic-bezier(0.77, 0, 0.175, 1) 0s forwards;
+ }
+
+.slider-drag .cursor-background:before {
+   animation: fadeIn 1s cubic-bezier(0.77, 0, 0.175, 1) 0s forwards,
+   translateLeftDot 1s cubic-bezier(0.77, 0, 0.175, 1) 0s forwards;
+ }
+
+.slider-drag .cursor-background .main-cursor {
+  animation: fadeOut 0.75s cubic-bezier(0.77, 0, 0.175, 1) 0s forwards;
+}
+
+.hamburger .cursor-background {
+  animation: fadeOut 1s cubic-bezier(0.77, 0, 0.175, 1) 0s forwards;
+}
+
+.hamburger .main-cursor-background {
+  animation: scaleUp 1s cubic-bezier(0.77, 0, 0.175, 1) 0s forwards;
+}
+
+/* Default Animation */
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes bgUp {
+  from {
+    background-color: transparent;
+  }
+
+  to {
+    background-color: black;
+  }
+}
+
+@keyframes bgDown {
+  from {
+    background-color: black;
+  }
+
+  to {
+    background-color: transparent;
+  }
+}
+
+@keyframes scaleUp {
+  from {
+    transform: scale(1);
+  }
+
+  to {
+    transform: scale(1.5);
+  }
+}
+
+@keyframes scaleDown {
+  from {
+    transform: scale(1.5);
+  }
+
+  to {
+    transform: scale(1);
+  }
+}
+
+@keyframes translateLeftDot {
+  from {
+    transform: translate(20px, -50%);
+  }
+
+  to {
+    transform: translate(0px, -50%);
+  }
+}
+
+@keyframes translateRightDot {
+  from {
+    transform: translate(-20px, -50%);
+  }
+
+  to {
+    transform: translate(0px, -50%);
+  }
+}
+
+/* Bouncing Animation */
+@keyframes bounce {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(10px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+/* Extended */
+body.enable-html .form-wrapper {
+  display: block;
+}
+
+
+/* Page Transition */
+.pt-page-moveToTopEasing {
+  -webkit-animation: moveToTop .7s ease-in-out both;
+  animation: moveToTop .7s ease-in-out both;
+}
+
+.pt-page-moveToBottomEasing {
+  -webkit-animation: moveToBottom .7s ease-in-out both;
+  animation: moveToBottom .7s ease-in-out both;
+}
+
+@-webkit-keyframes moveToTop {
+  from { }
+  to { -webkit-transform: translateY(-100%); }
+}
+
+@keyframes moveToTop {
+  from { }
+  to { -webkit-transform: translateY(-100%); transform: translateY(-100%); }
+}
+
+@-webkit-keyframes moveFromTop {
+  from { -webkit-transform: translateY(-100%); }
+  to { -webkit-transform: translateY(0%); }
+}
+
+@keyframes moveFromTop {
+  from { -webkit-transform: translateY(-100%); transform: translateY(-100%); }
+  to { -webkit-transform: translateY(0%); transform: translateY(0%); }
+}
+
+@-webkit-keyframes moveToBottom {
+  from { }
+  to { -webkit-transform: translateY(100%); }
+}
+
+@keyframes moveToBottom {
+  from { }
+  to { -webkit-transform: translateY(100%); transform: translateY(100%); }
+}
