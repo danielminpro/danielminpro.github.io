@@ -326,7 +326,7 @@ export default function Overlay() {
           </div>
         </BottomLeft>
         <BottomRight>
-          <a target="_blank" href="https://www.linkedin.com/in/danielmin" rel="noreferrer">
+          <a target="_blank" href="https://www.linkedin.com/in/danielminpro" rel="noreferrer">
             <IconLinkedIn width={30} height={30} color={theme.palette.text.secondary} />
           </a>
           <a target="_blank" href="https://github.com/1codeenchanter" rel="noreferrer" style={{ marginLeft: '10px' }}>
